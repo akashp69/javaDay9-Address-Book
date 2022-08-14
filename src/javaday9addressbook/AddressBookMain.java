@@ -1,5 +1,6 @@
 package javaday9addressbook;
 
+
 import javaday9addressbook.AddressBook;
 import java.util.*;
 public class AddressBookMain {
@@ -41,6 +42,12 @@ public class AddressBookMain {
         char editOption = sc.next().charAt(0);
         if (editOption == 'Y') {
             console.editContact(contact);
+        }
+        console.showContact(contact);
+        System.out.print("\nDo you want to delete? press Y / N : ");
+        char deleteOption = sc.next().charAt(0);
+        if (deleteOption == 'Y') {
+            contact = console.deleteContact(contact);
         }
         console.showContact(contact);
         sc.close();

@@ -11,7 +11,6 @@ public class AddressBookMain {
         long phoneNo;
         char option;
         ArrayList<AddressBook> contactArr = new ArrayList<AddressBook>();
-
         Scanner sc = new Scanner(System.in);
         do {
             AddressBook contact = new AddressBook();
@@ -39,26 +38,25 @@ public class AddressBookMain {
             System.out.print("\nEnter Zip  : ");
             zip = sc.nextInt();
             contact.setZip(zip);
-            contactArr.add(contact);
-            System.out.print(
-                    "\nDo you want to add one more contact? press Y / N : ");
+            Console console = new Console();
+            console.storeContact(firstName, contact);
+            System.out.print("\nDo you want to add one more contact? press Y / N : ");
             option = sc.next().charAt(0);
             sc.nextLine();
         } while (option == 'Y');
-
-        Console  console = new Console ();
+        Console console = new Console();
         System.out.print("\nDo you want to edit? press Y / N : ");
         char editOption = sc.next().charAt(0);
         if (editOption == 'Y') {
-            console.editContact(contactArr);
+            console.editContact();
         }
-        console.showContact(contactArr);
+        console.showContact();
         System.out.print("\nDo you want to delete? press Y / N : ");
         char deleteOption = sc.next().charAt(0);
         if (deleteOption == 'Y') {
-            contactArr = console.deleteContact(contactArr);
+            console.deleteContact();
         }
-        console.showContact(contactArr);
+        console.showContact();
         sc.close();
     }
 }
